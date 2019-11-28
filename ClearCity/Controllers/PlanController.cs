@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using ClearCity.Automatization;
 using ClearCity.DAL;
@@ -148,10 +146,13 @@ namespace ClearCity.Controllers
 
         public ActionResult Automatization()
         {
-            AutoHelper ah = new AutoHelper(db);
-            var list = ah.GetPlan(DateTime.Now);
+            var d = DateTime.Now;
+            d = d.AddDays(1);
+            AutoHelper ah = new AutoHelper(db, d);
+            var list = ah.GetPlan();
 
-            
+            db.Database.ExecuteSqlCommand("TRUNCATE TABLE [Plan]");
+            db.SaveChanges();
 
             foreach (var p in list)
             {
@@ -159,7 +160,8 @@ namespace ClearCity.Controllers
             }
             db.SaveChanges();
 
-            return View("Index", db.Plans.ToList());
+            return View("Index", db.Plans.Where(p=>p.Date.Year == d.Year && p.Date.Month == d.Month
+            && p.Date.Day==d.Day).ToList());
         }
 
         protected override void Dispose(bool disposing)

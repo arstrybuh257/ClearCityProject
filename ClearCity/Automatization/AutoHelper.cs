@@ -16,10 +16,12 @@ namespace ClearCity.Automatization
         }
         private List<Team> teams;
         private List<House> houses;
-        public AutoHelper(ClearCityContext db)
+        private DateTime date;
+        public AutoHelper(ClearCityContext db, DateTime date)
         {
             teams = db.Teams.Where(t=> t.TeamId!=1).ToList();
             houses = db.Houses.OrderByDescending(h => h.AmountOfCans).ToList();
+            this.date = date;
         }
 
         private int Avg()
@@ -31,7 +33,7 @@ namespace ClearCity.Automatization
         }
 
 
-        public List<Plan> GetPlan(DateTime date)
+        public List<Plan> GetPlan()
         {
             int avg = Avg();
             List<TeamAmount> dict = new List<TeamAmount>();
@@ -47,7 +49,7 @@ namespace ClearCity.Automatization
                 for (int i = 0; i < dict.Count; i++)
                 {
                     if (houses.Count == 0) return list;
-                    if (dict[i].Value < 1.2 * avg)
+                    if (dict[i].Value < avg)
                     {
                         dict[i].Value += houses[0].AmountOfCans;
                         list.Add(new Plan { Date = date, HouseId = houses[0].HouseId, TeamId = dict[i].Team.TeamId });
@@ -60,7 +62,7 @@ namespace ClearCity.Automatization
                 for (int i = 0; i < dict.Count; i++)
                 {
                     if (houses.Count == 0) return list;
-                    if (dict[i].Value < 1.2 * avg)
+                    if (dict[i].Value <  avg)
                     {
                         dict[i].Value += houses[0].AmountOfCans;
                         list.Add(new Plan { Date = date, HouseId = houses[0].HouseId, TeamId = dict[i].Team.TeamId });

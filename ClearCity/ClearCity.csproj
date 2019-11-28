@@ -258,9 +258,11 @@
     <Content Include="Views\Employee\ShowAgeGroups.cshtml" />
     <Content Include="Views\Plan\Report.cshtml" />
     <Content Include="Views\Employee\EmployeeReport.cshtml" />
+    <Content Include="Views\Plan\PlanDay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\PlanReport\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
