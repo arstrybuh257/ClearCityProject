@@ -1,0 +1,81 @@
+﻿@model ClearCity.Models.HouseListViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Дом</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Поиск по адресу: @Html.TextBox("SearchString")
+        <input type="submit" value="Поиск" />
+    </p>
+}
+
+<p>
+    @Html.ActionLink("Добавить новый дом", "Create")
+</p>
+
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Район: </label>
+        @Html.DropDownList("district", Model.District as SelectList,
+                    htmlAttributes: new { @class = "form-control" })
+
+        <label class="control-label">Микрорайон: </label>
+        @Html.DropDownList("microdistrict", Model.Microdistrict as SelectList,
+                htmlAttributes: new { @class = "form-control" })
+
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Сортировать по:
+        </th>
+        <th>
+            @Html.ActionLink("Название микрорайона", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th>
+            @Html.ActionLink("Количество баков", "Index", new { sortOrder = ViewBag.AmountSortParm })
+        </th>
+    </tr>
+    <tr>
+        <th>
+            Название микрорайона
+        </th>
+        <th>
+            Адресс
+        </th>
+        <th>
+            Количество баков
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Houses)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Microdistrict.MicrodistrictName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountOfCans)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.HouseId }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.HouseId }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.HouseId })
+            </td>
+        </tr>
+    }
+
+</table>

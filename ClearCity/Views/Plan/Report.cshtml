@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ClearCity.Models.PlanReport>
+
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script>
+    function myPrint() {
+        var b = document.getElementById("btn-print");
+        b.hidden = true;
+        window.print();
+    }
+</script>
+
+<h2>Отчет о выполненной работе по каждой бригаде</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Название бригады
+        </th>
+        <th>
+            Количество очищеных баков
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountOfCans)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<br />
+<button onclick="myPrint()" id="btn-print" class="btn-success">Распечатать отчет</button>
+
+<div style=" text-align:right">Подпись: _____________</div>

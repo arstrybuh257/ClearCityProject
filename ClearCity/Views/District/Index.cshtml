@@ -1,0 +1,51 @@
+﻿@model IEnumerable<ClearCity.Models.District>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Районы</h2>
+
+<p>
+    @Html.ActionLink("Добавить новый район", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Название района
+        </th>
+        <th>
+            Площадь
+        </th>
+        <th>
+            Население
+        </th>
+        <th>
+            Ответственный
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DistrictName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Area)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Population)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Manager)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.DistrictId }) |
+            @Html.ActionLink("Подробнее", "Details", new { id=item.DistrictId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.DistrictId })
+        </td>
+    </tr>
+}
+
+</table>

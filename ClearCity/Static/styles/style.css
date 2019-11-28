@@ -1,0 +1,127 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Montserrat Bold';
+    src: url('../../fonts/montserrat-bold-webfont.eot');
+    src: url('../../fonts/montserrat-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/montserrat-bold-webfont.woff2') format('woff2'),
+         url('../../fonts/montserrat-bold-webfont.woff') format('woff'),
+         url('../../fonts/montserrat-bold-webfont.ttf') format('truetype'),
+         url('../../fonts/montserrat-bold-webfont.svg#montserratbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Montserrat Medium';
+    src: url('../fonts/montserrat-medium-webfont.eot');
+    src: url('../fonts/montserrat-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/montserrat-medium-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat-medium-webfont.woff') format('woff'),
+         url('../fonts/montserrat-medium-webfont.ttf') format('truetype'),
+         url('../fonts/montserrat-medium-webfont.svg#montserratmedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+	background-color: palegoldenrod;
+}
+
+
+.container {
+	margin: 0 auto;
+	width: 80%;
+}
+
+.heading {
+	position: relative;
+	margin-top:60px;
+	text-align: center;
+}
+.heading h1 {
+	font-size: 70px;
+	font-family: Montserrat Bold;
+	text-transform: uppercase;
+}
+
+.heading p {
+	padding-top:10px;
+	font-size: 33px;
+	font-family: Montserrat Medium ;
+}
+
+.col img {
+	max-width: 200px;
+	height: 200px;
+	padding:30px;
+}
+
+.col a {
+	border-radius: 100%;
+	border:3px solid #000;
+	display: inline-block;
+	background: #ffff00;
+}
+
+.col a:hover {
+	transition: 0.6s;
+	background-color: #ccc; 
+}
+
+.list{
+	padding-top: 70px;
+	font-size: 0;
+}
+
+.col {
+	display: inline-block;
+	width: 33.33%;
+	font-size: 14px;
+	text-align: center;
+}
+
+.heading img {
+	height: 60px;
+	width: 60px;
+	position: absolute;
+	left: 65%;
+	top:50%;
+	transform: translate(-50%,-50%);
+	animation: go 7s infinite;
+
+}
+
+@keyframes go {
+	0% {
+		left:65%;
+		top:50%;
+		bottom:0%;
+		right:0%;
+	}
+
+	33.33% {
+		left:75%;
+		top:20%;
+		/*bottom:0%;
+		right:0%;*/
+	}
+
+	66.66% {
+		left:70%;
+		top:65%;		
+		
+	}
+
+
+	100% {
+		left:65%;
+		top:50%;
+		bottom:0%;
+		right:0%;
+	}
+}

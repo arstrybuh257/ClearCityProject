@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ClearCity.Models.CarAge>
+
+@{
+    ViewBag.Title = "ShowCarAge";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Возраст автомобилей</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Модель автомобиля
+        </th>
+        <th>
+            Номер
+        </th>
+        <th>
+            Возраст(лет)
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+
+        </tr>
+    }
+</table>

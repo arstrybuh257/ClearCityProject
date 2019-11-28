@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "ShowAgeGroups";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Количество сотрудников по возрастным группам</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Младше 18 лет
+        </th>
+        <th>
+            От 18 до 25 лет
+        </th>
+        <th>
+            От 25 до 45 лет
+        </th>
+        <th>
+            От 45 до 60 лет
+        </th>
+        <th>
+            Старше 60 лет
+        </th>
+
+    </tr>
+    <tr>
+
+        <td>
+            @ViewData["Less18"]
+        </td>
+        <td>
+            @ViewData["From18To25"]
+        </td>
+        <td>
+            @ViewData["From25To45"]
+        </td>
+        <td>
+            @ViewData["From45To60"]
+        </td>
+        <td>
+            @ViewData["More60"]
+        </td>
+
+    </tr>
+
+</table>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <link href="~/Static/styles/main.css" rel="stylesheet" />
+    <link href="~/Static/styles/style.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title ClearCity</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style=" background-color:yellow; color:#000 !important;">
+        <div class="container">
+            <div class="navbar-header" >
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("ClearCity", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" style="color:white">
+                    <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Районы", "Index", "District")</li>
+                    <li>@Html.ActionLink("Микрорайоны", "Index", "Microdistrict")</li>
+                    <li>@Html.ActionLink("Дома", "Index", "House")</li>
+                    <li>@Html.ActionLink("Бригады", "Index", "Team")</li>
+                    <li>@Html.ActionLink("Автомобили", "Index", "Car")</li>
+                    <li>@Html.ActionLink("Сотрудники", "Index", "Employee")</li>
+                    <li>@Html.ActionLink("План работы", "Index", "Plan")</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p style="position:absolute; left:7%; bottom:3%;font-size:14px" >&copy; @DateTime.Now.Year - ClearCity</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

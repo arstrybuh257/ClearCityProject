@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ClearCity.Models.MicrodistrictStatistic>
+
+@{
+    ViewBag.Title = "AmountRate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Рейтинг микрорайонов</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Название микрорайона
+        </th>
+        <th>
+            Количество баков
+        </th>
+        
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.MicrodistrictName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountOfCans)
+            </td>
+            
+        </tr>
+    }
+
+</table>
+

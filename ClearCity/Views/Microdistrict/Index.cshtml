@@ -1,0 +1,54 @@
+﻿@model ClearCity.Models.MicrodistrictListViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Микрорайоны</h2>
+
+<p>
+    @Html.ActionLink("Создать новый микрорайон", "Create")
+</p>
+<form method="get">
+    <div class="form-inline">
+        <label class="control-label">Район: </label>
+        @Html.DropDownList("district", Model.District as SelectList,
+                    htmlAttributes: new { @class = "form-control" })
+
+
+        <input type="submit" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Название района
+        </th>
+        <th>
+            Название микрорайона
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Microdistricts)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.District.DistrictName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MicrodistrictName)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.MicrodistrictId }) |
+                @Html.ActionLink("Подробнее", "Details", new { id = item.MicrodistrictId }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.MicrodistrictId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@Html.ActionLink("Рейтинг районов по количеству мусорных баков", "AmountRate")

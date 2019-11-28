@@ -1,0 +1,84 @@
+﻿@model IEnumerable<ClearCity.Models.Employee>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Сотрудники</h2>
+
+@using (Html.BeginForm())
+{
+    <p>
+        Поиск по имени: @Html.TextBox("SearchString")
+        <input type="submit" value="Поиск" />
+    </p>
+}
+
+<p id="staff">
+    @Html.ActionLink("Добавить сотрудника", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th class="icon-down-up">
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm })
+        </th>
+        <th class="icon-down-up">
+            @Html.ActionLink("BirthDate", "Index", new { sortOrder = ViewBag.DateSortParm })
+        </th>
+    </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Team.TeamName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Position)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Adress)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Team.TeamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.EmployeeId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId })
+            </td>
+        </tr>
+    }
+
+</table>
+@Html.ActionLink("Посмотреть количество сотрудников по возрастным группам", "ShowAgeGroups")
+<br/>
+@Html.ActionLink("Составить список сотрудников по бригадам", "EmployeeReport")

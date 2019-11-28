@@ -1,0 +1,32 @@
+﻿@model IEnumerable<ClearCity.Models.EmployeeReportView>
+
+@{
+    ViewBag.Title = "EmployeeReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+    function myPrint() {
+        var b = document.getElementById("btn-print");
+        b.hidden = true;
+        window.print();
+    }
+</script>
+
+<h2>Распределение по бригадам</h2>
+
+<div>
+
+    @foreach (var item in Model)
+    {
+        <div>@item.TeamName</div>
+        foreach (var i in item.Employees)
+        {
+            <div>@i.Position:  @i.Name</div>
+
+        }
+        <br />
+    }
+
+</div>
+
+<button onclick="myPrint()" id="btn-print" class="btn-success">Распечатать отчет</button>

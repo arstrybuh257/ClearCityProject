@@ -1,0 +1,48 @@
+﻿@model ClearCity.Models.House
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Удалить</h2>
+
+<h3>Вы уверенны, что хотите удалить этот дом?</h3>
+<div>
+    <h4>Дом</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Microdistrict.MicrodistrictName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Microdistrict.MicrodistrictName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Adress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Adress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AmountOfCans)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AmountOfCans)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад к списку", "Index")
+        </div>
+    }
+</div>
